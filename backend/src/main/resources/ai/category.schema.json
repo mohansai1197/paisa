@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "categoryId": {"type": "integer"},
+    "explanation": {"type": "string", "maxLength": 600}
+  },
+  "required": ["categoryId", "explanation"],
+  "additionalProperties": false
+}

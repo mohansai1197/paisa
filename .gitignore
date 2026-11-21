@@ -1,0 +1,16 @@
+node_modules/
+dist/
+target/
+.local/
+.env
+.env.*
+!.env.example
+tmp/
+.DS_Store
+*.log
+frontend/.openai/local.json
+.sites/
+output/
+__pycache__/
+*.pyc
+backend/src/main/resources/static/

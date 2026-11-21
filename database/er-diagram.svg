@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="740" viewBox="0 0 1120 740">
+<rect width="1120" height="740" fill="#f5f8fa"/>
+<style>text{font-family:Arial,sans-serif;fill:#152b3b}.title{font-size:18px;font-weight:bold}.field{font-size:15px}.note{font-size:14px}</style>
+<path d="M180 215 L180 285 L370 285 L370 360 M545 215 L545 295 L470 295 L470 360 M910 215 L910 265 L530 265 L530 360 M910 215 L910 360" stroke="#598c7d" stroke-width="2" fill="none"/>
+<rect x="30" y="40" width="320" height="170" rx="12" fill="white" stroke="#c5d8d0"/>
+<rect x="30" y="40" width="320" height="46" rx="12" fill="#e5f2ec"/>
+<text class="title" x="48" y="69">USERS</text>
+<text class="field" x="48" y="115">id · PK</text>
+<text class="field" x="48" y="140">name</text>
+<text class="field" x="48" y="165">email · UNIQUE</text>
+<text class="field" x="48" y="190">password_hash · email_verified</text>
+<rect x="395" y="40" width="320" height="170" rx="12" fill="white" stroke="#c5d8d0"/>
+<rect x="395" y="40" width="320" height="46" rx="12" fill="#e5f2ec"/>
+<text class="title" x="413" y="69">ACCOUNTS</text>
+<text class="field" x="413" y="115">id · PK</text>
+<text class="field" x="413" y="140">owner_id · FK → users</text>
+<text class="field" x="413" y="165">name / type</text>
+<text class="field" x="413" y="190">opening_balance</text>
+<rect x="760" y="40" width="320" height="170" rx="12" fill="white" stroke="#c5d8d0"/>
+<rect x="760" y="40" width="320" height="46" rx="12" fill="#e5f2ec"/>
+<text class="title" x="778" y="69">CATEGORIES</text>
+<text class="field" x="778" y="115">id · PK</text>
+<text class="field" x="778" y="140">owner_id · FK → users</text>
+<text class="field" x="778" y="165">name / type / color</text>
+<text class="field" x="778" y="190">UNIQUE owner + name + type</text>
+<rect x="220" y="360" width="320" height="220" rx="12" fill="white" stroke="#c5d8d0"/>
+<rect x="220" y="360" width="320" height="46" rx="12" fill="#e5f2ec"/>
+<text class="title" x="238" y="389">TRANSACTIONS</text>
+<text class="field" x="238" y="435">id · PK</text>
+<text class="field" x="238" y="460">owner_id · FK → users</text>
+<text class="field" x="238" y="485">account_id · FK → accounts</text>
+<text class="field" x="238" y="510">category_id · FK → categories</text>
+<text class="field" x="238" y="535">type / description</text>
+<text class="field" x="238" y="560">amount / transaction_date</text>
+<rect x="710" y="360" width="320" height="195" rx="12" fill="white" stroke="#c5d8d0"/>
+<rect x="710" y="360" width="320" height="46" rx="12" fill="#e5f2ec"/>
+<text class="title" x="728" y="389">BUDGETS</text>
+<text class="field" x="728" y="435">id · PK</text>
+<text class="field" x="728" y="460">owner_id · FK → users</text>
+<text class="field" x="728" y="485">category_id · FK → categories</text>
+<text class="field" x="728" y="510">budget_month / limit_amount</text>
+<text class="field" x="728" y="535">UNIQUE owner + category + month</text>
+<text class="note" x="30" y="660">Paisa · Five-table entity relationship diagram · Every owner relationship is one-to-many.</text>
+<text class="note" x="30" y="688">Each account and category has many transactions; each expense category has many monthly budgets.</text>
+<text class="note" x="30" y="716">All owner foreign keys reference users.id. Services verify that related records belong to the same user.</text>
+</svg>
