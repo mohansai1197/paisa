@@ -54,3 +54,7 @@ References: https://docs.railway.com/databases/mysql, https://railway.com/guides
 - Remote read-only smoke checks passed: frontend HTML, JSON status, MySQL mode, CSRF token, Secure cookies, and unauthenticated workspace returning JSON 401. AI configured true; email configured false.
 - The live browser renders the dashboard and Sign in action. No cloud registration, email, account persistence through authenticated requests, or real cloud Gemini generation is claimed verified yet. Local MySQL records were not migrated.
 - Remaining blocker: Railway Trial disables Gmail SMTP. User must choose an HTTPS email sender integration or personally upgrade to a plan supporting SMTP. Verification stays enabled. No paid plan selected.
+
+### HTTPS email enabled
+
+The Brevo HTTPS adapter is deployed and privately configured. A sender-inbox connection-test send was accepted by Brevo with HTTP 201. Remote smoke checks now report email configured true; private inbox and authenticated end-to-end checks remain outstanding. See [HTTPS email](28-https-email.md) for current evidence.

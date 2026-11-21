@@ -16,3 +16,7 @@ Files: `backend/src/main/java/com/paisa/service/BrevoMailClient.java`, `Verifica
 Verification: release build and 38 backend tests pass, including local HTTP transport tests using fictional data and a dummy API key. Real Brevo sender approval, delivery, and cloud end-to-end verification remain pending credentials. The source packager also scans against a configured Brevo secret before publishing.
 
 Provider API reference: https://developers.brevo.com/reference/send-transac-email.
+
+## Live configuration checkpoint
+
+Brevo sender is verified. The supplied API key is stored in private local configuration and Railway service variables, with `MAIL_FROM` set to the verified sender. No credential is committed. The packager passed its secret scan after this configuration. Brevo accepted one connection-test email to the sender’s own inbox (HTTP 201); this is provider acceptance, not inbox-delivery confirmation. Railway deployment `4c53f69c-8b75-4049-98dd-822aebd3d677` succeeded, and remote smoke checks report AI configured true and email configured true. Real signup verification and password reset still need private browser/inbox testing. No phone-verification gate was returned by the tested HTTPS send.
