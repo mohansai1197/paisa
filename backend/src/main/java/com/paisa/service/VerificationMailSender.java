@@ -1,6 +1,7 @@
 package com.paisa.service;
 
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
@@ -12,17 +13,26 @@ import org.springframework.web.server.ResponseStatusException;
 public class VerificationMailSender {
   private final ObjectProvider<JavaMailSender> sender;
   private final String host, from;
+  private final BrevoMailClient brevo;
 
+  @Autowired
   public VerificationMailSender(
       ObjectProvider<JavaMailSender> sender,
       @Value("${spring.mail.host:}") String host,
-      @Value("${paisa.mail-from:}") String from) {
+      @Value("${paisa.mail-from:}") String from,
+      BrevoMailClient brevo) {
     this.sender = sender;
     this.host = host;
     this.from = from;
+    this.brevo = brevo;
+  }
+
+  VerificationMailSender(ObjectProvider<JavaMailSender> sender, String host, String from) {
+    this(sender, host, from, null);
   }
 
   public boolean configured() {
+    if (brevo != null && brevo.configured()) return true;
     return !host.isBlank() && !from.isBlank() && sender.getIfAvailable() != null;
   }
 
@@ -55,6 +65,10 @@ public class VerificationMailSender {
 
   private void send(String email, String subject, String text) {
     requireConfigured();
+    if (brevo != null && brevo.configured()) {
+      brevo.send(email, subject, text);
+      return;
+    }
     SimpleMailMessage message = new SimpleMailMessage();
     message.setFrom(from);
     message.setTo(email);

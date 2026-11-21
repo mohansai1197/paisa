@@ -32,7 +32,7 @@ The [implementation guide](docs/19-implementation-and-review.md) maps each featu
 
 ## Verify and deploy
 
-Run `mvn test` in `backend` and `npm run build` in `frontend`. Thirty-five backend checks and thirteen frontend checks pass, including finance integration and AI transport/validation cases. Real provider calls pass for all four AI features using fictional data. A separate live MySQL check verified registration/session, saved transactions, refreshed balances, test-record cleanup, all five tables, and monthly Gemini output using MySQL records. The Dockerfile compiles React into Spring Boot for one-origin hosting. `railway.toml` prepares a deployment; set database environment variables, `GEMINI_API_KEY`, and `SECURE_COOKIES=true` behind HTTPS. Docker is not installed locally; the GitHub Actions Docker image build passed, and Railway reports a successful deployment. A combined executable jar has been built and verified on Java 17: use `python3 scripts/build_release.py` to reproduce it. Use `python3 scripts/package_source.py` for a source-only ZIP that excludes private files.
+Run `mvn test` in `backend` and `npm run build` in `frontend`. Thirty-eight backend checks and thirteen frontend checks pass, including finance integration and AI transport/validation cases. Real provider calls pass for all four AI features using fictional data. A separate live MySQL check verified registration/session, saved transactions, refreshed balances, test-record cleanup, all five tables, and monthly Gemini output using MySQL records. The Dockerfile compiles React into Spring Boot for one-origin hosting. `railway.toml` prepares a deployment; set database environment variables, `GEMINI_API_KEY`, and `SECURE_COOKIES=true` behind HTTPS. Docker is not installed locally; the GitHub Actions Docker image build passed, and Railway reports a successful deployment. A combined executable jar has been built and verified on Java 17: use `python3 scripts/build_release.py` to reproduce it. Use `python3 scripts/package_source.py` for a source-only ZIP that excludes private files.
 
 The [private Sites sample preview](https://paisa-finance-hackquest.violetkoala8.chatgpt.site) is published successfully. It demonstrates browser sample mode only; the full Java/MySQL app is deployed separately on Railway; production email remains pending. The hosted preview requires owner sign-in. Automated browser handoff redirected to OpenAI authentication and was blocked by approval review, so hosted UI verification is pending; the same frontend was verified locally.
 
@@ -106,3 +106,5 @@ Workspace address: `/Users/mohansai/Documents/ChatGPT/hackathon`. The documentat
 [Demo-data loading](docs/26-demo-data.md).
 
 [Production deployment and verification](docs/27-production-deployment.md).
+
+[Brevo HTTPS email setup](docs/28-https-email.md).

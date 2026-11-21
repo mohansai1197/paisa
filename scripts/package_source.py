@@ -14,7 +14,7 @@ if __name__ == "__main__":
     files = sorted({Path(name.decode()) for name in listing.split(b"\0") if name})
     values = read_env(ROOT / ".env")
     secrets = [values.get(key, "").encode() for key in
-               ["GEMINI_API_KEY", "SMTP_PASSWORD", "SPRING_DATASOURCE_PASSWORD"]]
+               ["GEMINI_API_KEY", "BREVO_API_KEY", "SMTP_PASSWORD", "SPRING_DATASOURCE_PASSWORD"]]
     for relative in files:
         path = ROOT / relative
         if path.is_symlink() or not path.is_file():

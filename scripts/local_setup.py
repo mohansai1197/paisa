@@ -55,6 +55,11 @@ a{{color:#116d50}}.foot{{font-size:14px;color:#536b60}}
 <label>Database application username<input name="username" required maxlength="100" autocomplete="off" placeholder="paisa_app"></label>
 <label>Database application password<input type="password" name="password" required maxlength="4096" autocomplete="off"></label>
 <button type="submit">Save database connection</button></form></section>
+<section><h2>Connect Brevo HTTPS emails</h2><p>For Railway Trial, use Brevo's email API. Verify a sender in Brevo first. Enter an API key, not an SMTP key. These values are saved privately on this computer; they are not sent to Railway by this form.</p>
+<form method="post" action="/save"><input type="hidden" name="nonce" value="{NONCE}"><input type="hidden" name="kind" value="brevo">
+<label>Verified sender email<input type="email" name="sender" required maxlength="180" autocomplete="off"></label>
+<label>Brevo API key<input type="password" name="api_key" required maxlength="4096" autocomplete="off"></label>
+<button type="submit">Save HTTPS email connection privately</button></form></section>
 <section><h2>Connect Gmail verification emails</h2><p>Use a Gmail app password created for Paisa. Never enter your regular Google password. Paisa will use this account to send requested verification codes.</p>
 <form method="post" action="/save"><input type="hidden" name="nonce" value="{NONCE}"><input type="hidden" name="kind" value="email">
 <label>Sender Gmail address<input type="email" name="sender" required maxlength="180" autocomplete="off"></label>
@@ -124,6 +129,11 @@ class Handler(BaseHTTPRequestHandler):
                 if not url.startswith("jdbc:mysql://") or len(url) > 500 or not username or len(username) > 100 or not password or len(password) > 4096:
                     raise ValueError()
                 save_values({"SPRING_DATASOURCE_URL": url, "SPRING_DATASOURCE_USERNAME": username, "SPRING_DATASOURCE_PASSWORD": password})
+            elif value("kind") == "brevo":
+                sender, key = value("sender").strip(), value("api_key").strip()
+                if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", sender) or len(sender) > 180 or not 20 <= len(key) <= 4096:
+                    raise ValueError()
+                save_values({"BREVO_API_KEY": key, "MAIL_FROM": sender})
             elif value("kind") == "email":
                 sender = value("sender").strip()
                 app_password = value("app_password").replace(" ", "")
