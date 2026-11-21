@@ -4,7 +4,7 @@ The application ships as one Java 17 container with React assets included. The b
 
 ## Current checkpoint
 
-Local release and finance/auth/AI regression checks pass. Production hosting, repository upload, and remote end-to-end verification are pending account setup. Docker is not installed locally; the GitHub workflow builds the image once source is uploaded.
+Local release and finance/auth/AI regression checks pass. Source is uploaded to https://github.com/mohansai1197/paisa on `main` after explicit approval for public source with credentials excluded. Production hosting and remote end-to-end verification remain pending Railway setup. All 35 backend tests also pass on Java 17; 13 frontend tests pass. A temporary production-profile instance verified MySQL startup and Secure CSRF cookies behind HTTPS proxy headers, then was stopped. Docker is not installed locally; the GitHub workflow builds the image once source is uploaded.
 
 ## Repository
 

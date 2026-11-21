@@ -4,7 +4,7 @@ A personal-finance dashboard for the VCube Hack Quest. React + Java + Spring Boo
 
 **Local app:** [Open Paisa locally](http://127.0.0.1:5173) or [open the private hosted sample preview](https://paisa-finance-hackquest.violetkoala8.chatgpt.site). The current connected workspace uses **MySQL 8.0.37**. The browser sample workspace is also available without login. All demo records are fictional.
 
-**Implemented:** email-verified registration/login, accounts, categories, income/expenses, transaction history with search/filters/edit/delete, monthly budgets, charts, CSV downloads, and the four AI feature flows. **MySQL persistence and real Gemini calls are verified. Still pending:** production Java/MySQL hosting and a submission GitHub repository. No provider outputs are fabricated.
+**Implemented:** email-verified registration/login, accounts, categories, income/expenses, transaction history with search/filters/edit/delete, monthly budgets, charts, CSV downloads, and the four AI feature flows. **MySQL persistence and real Gemini calls are verified. Source:** [mohansai1197/paisa](https://github.com/mohansai1197/paisa). **Still pending:** production Java/MySQL hosting. No provider outputs are fabricated.
 
 ## Run locally
 
