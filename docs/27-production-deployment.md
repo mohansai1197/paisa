@@ -4,7 +4,7 @@ The application ships as one Java 17 container with React assets included. The b
 
 ## Current checkpoint
 
-Local release and finance/auth/AI regression checks pass. Source is uploaded to https://github.com/mohansai1197/paisa on `main` after explicit approval for public source with credentials excluded. Production hosting and remote end-to-end verification remain pending Railway setup. All 35 backend tests also pass on Java 17; 13 frontend tests pass. A temporary production-profile instance verified MySQL startup and Secure CSRF cookies behind HTTPS proxy headers, then was stopped. Docker is not installed locally; the GitHub workflow builds the image once source is uploaded.
+Local release and finance/auth/AI regression checks pass. Source is uploaded to https://github.com/mohansai1197/paisa on `main` after explicit approval for public source with credentials excluded. Railway reports a successful deployment at https://paisa-production.up.railway.app. Production email delivery and authenticated remote end-to-end verification remain pending. The GitHub Docker image build passed: https://github.com/mohansai1197/paisa/actions/runs/44884593187. All 35 backend tests also pass on Java 17; 13 frontend tests pass. A temporary production-profile instance verified MySQL startup and Secure CSRF cookies behind HTTPS proxy headers, then was stopped. Docker is not installed locally; the GitHub workflow builds the image once source is uploaded.
 
 ## Repository
 
@@ -42,3 +42,15 @@ Run `python3 scripts/check_deployment.py https://YOUR-RAILWAY-DOMAIN`. This chec
 Then verify in the browser: register → receive email → verify → sign in → load demo records → refresh to confirm persistence → generate monthly AI insights → check balances/reports → request password reset and complete it privately. Confirm previous sessions are rejected after reset. No live URL is considered verified before these steps pass.
 
 References: https://docs.railway.com/databases/mysql, https://railway.com/guides/spring-boot, https://docs.railway.com/networking/outbound-networking.
+
+## Live deployment checkpoint
+
+- Project: `b9839d86-3b95-4e6c-8cd7-5cfb1e680db8` (Railway-generated name `inspiring-victory`).
+- App service: `751803e1-5cb3-4b12-8512-c6c14c78f433`; MySQL: `e1a4089f-a744-4d43-88ab-ece737171198`.
+- Successful app deployment: `83ac53db-7503-481f-b955-518425ed7368`.
+- Domain: https://paisa-production.up.railway.app, port 8080.
+- Production profile, MySQL variable references, Gemini key (explicitly authorized private transfer), Dockerfile builder/path, and `/api/status` health check with 180-second timeout configured through Railway UI.
+- Railway now deprecates Config as Code for new services; the checked-in legacy `railway.toml` was not relied upon. Actual settings were applied directly.
+- Remote read-only smoke checks passed: frontend HTML, JSON status, MySQL mode, CSRF token, Secure cookies, and unauthenticated workspace returning JSON 401. AI configured true; email configured false.
+- The live browser renders the dashboard and Sign in action. No cloud registration, email, account persistence through authenticated requests, or real cloud Gemini generation is claimed verified yet. Local MySQL records were not migrated.
+- Remaining blocker: Railway Trial disables Gmail SMTP. User must choose an HTTPS email sender integration or personally upgrade to a plan supporting SMTP. Verification stays enabled. No paid plan selected.
