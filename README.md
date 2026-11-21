@@ -1,5 +1,7 @@
 # Paisa
 
+**[Open the live app →](https://paisa-production.up.railway.app/)**
+
 A personal-finance dashboard for the VCube Hack Quest. React + Java + Spring Boot + Spring Security + JPA, configured for MySQL with backend-only Gemini integration.
 
 **Local app:** [Open Paisa locally](http://127.0.0.1:5173) or [open the private hosted sample preview](https://paisa-finance-hackquest.violetkoala8.chatgpt.site). The current connected workspace uses **MySQL 8.0.37**. The browser sample workspace is also available without login. All demo records are fictional.
